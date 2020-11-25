@@ -9,7 +9,7 @@ from qesandans import qesandans
 from PIL import ImageTk, Image
 import random
 
-filename = "test"  # 结果文件名
+filename = "test3"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
 #stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
 stimu_delaytime = [52,52,52,52,52,52,25,52,52]
@@ -351,7 +351,7 @@ while 1:
             # print(toc(t1))
             # print(i)
     for i in range(0,len(appear_time)):
-        if count>=appear_time[i] and count<=end_time[i]:
+        if count>=appear_time[i] and count<=end_time[i] and appear_time[i]!=end_time[i]:
             flag = i
             break
         else:

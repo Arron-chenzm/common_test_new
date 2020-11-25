@@ -9,8 +9,8 @@ from qesandans import qesandans
 from PIL import ImageTk, Image
 import random
 
-filename = "lwj_bg2_10_1"  # 结果文件名
-mode = 10 # 对比度选择10 20 50 100
+filename = "test2"  # 结果文件名
+mode = 100 # 对比度选择10 20 50 100
 
 stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
@@ -245,7 +245,7 @@ while 1:
         delay_time = qesans0.get_delaytime()
         trail_num.append(num)
     for i in range(0,len(appear_time)):
-        if count>=appear_time[i] and count<=end_time[i]:
+        if count>=appear_time[i] and count<=end_time[i] and appear_time[i]!=end_time[i]:
             flag = i
             break
         else:

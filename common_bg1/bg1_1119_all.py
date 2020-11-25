@@ -17,9 +17,9 @@ mode = 100  # 对比度选择 100 50 20 10
 # stimu_delaytime = [0,3,6,9,12,15,20]#3
 # stimu_delaytime = [0,4,8,12,16,20,30]#4
 # stimu_delaytime = [0,5,10,15,20,25,40]#5
-#stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
-stimu_delaytime = [152,152,152,152,152,152,152,152,152]
+#stimu_delaytime = [152,152,152,152,152,152,152,152,152]
 
 bg_appeartime = 60  # 每一张背景图片呈现的时间,单位1000/60ms
 bg_appearnum = 10  # 每一个trail呈现的图片数目
@@ -217,6 +217,7 @@ for i in range(0, bg_num):
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
+imagebox.extend(imagebox)
 random.shuffle(imagebox)
 
 for i in range(0, trail_times): #pic_ciji = []
@@ -363,7 +364,7 @@ while 1:
         delay_time = qesans0.get_delaytime()
         trail_num.append(num)
     for i in range(0,len(appear_time)):
-        if count>=appear_time[i] and count<=end_time[i]:
+        if count>=appear_time[i] and count<=end_time[i] and appear_time[i]!=end_time[i]:
             flag = i
             break
         else:

@@ -155,30 +155,57 @@ class qesandans():
                 elif event.type == pygame.MOUSEBUTTONUP:  # 鼠标弹起
                     if (tr1.get_see() == None):
                         tr1.set_see(btn1.mouseUp())
+                    else:
+                        btn1.mouseUp4()
                     if (tr1.get_see() == None):
                         tr1.set_see(btn2.mouseUp())
+                    else:
+                        btn2.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn3.mouseUp())
+                    else:
+                        btn3.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn4.mouseUp())
+                    else:
+                        btn4.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn5.mouseUp())
+                    else:
+                        btn5.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn6.mouseUp())
+                    else:
+                        btn6.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn7.mouseUp())
-                    if (tr1.get_see() == None):
-                        tr1.set_see(btn9.mouseUp())
+                    else:
+                        btn7.mouseUp4()
+                    if (tr1.get_thing() == None):
+                        tr1.set_thing(btn9.mouseUp())
+                    else:
+                        btn9.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn10.mouseUp())
+                    else:
+                        btn10.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn11.mouseUp())
+                    else:
+                        btn11.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn12.mouseUp())
+                    else:
+                        btn12.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn13.mouseUp())
+                    else:
+                        btn13.mouseUp4()
                     if (tr1.get_thing() == None):
                         tr1.set_thing(btn14.mouseUp())
+                    else:
+                        btn14.mouseUp4()
+
                     btn8.mouseUp3()
                     tr1.printres()
                     list_time_res[self.list_num] = tr1.res2str()

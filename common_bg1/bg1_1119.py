@@ -9,17 +9,12 @@ from qesandans import qesandans
 from PIL import ImageTk, Image
 import random
 
-filename = "test"  # 结果文件名
+filename = "test1"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
-
-# stimu_delaytime = [0,2,3,4,5,9,12]  # 储存刺激呈现时间的时间序列，与time_random2()配合1
-# stimu_delaytime = [0,2,4,6,8,10,12,20]#2
-# stimu_delaytime = [0,3,6,9,12,15,20]#3
-# stimu_delaytime = [0,4,8,12,16,20,30]#4
-# stimu_delaytime = [0,5,10,15,20,25,40]#5
-#stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+#stimu_delaytime = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
-stimu_delaytime = [352,352,352,352,352,352,352,352,352]
+#stimu_delaytime = [352,352,352,352,352,352,352,352,352]
 
 bg_appeartime = 60  # 每一张背景图片呈现的时间,单位1000/60ms
 bg_appearnum = 10  # 每一个trail呈现的图片数目
@@ -28,7 +23,7 @@ trail_times = 91  # 呈现trail次数
 num = 0  # 储藏回答问题的总数目
 trail_num = []  # 存储每一个trail结束后，回答问题的总数目
 ciji_shape = 4
-tm_pra = 150 # 刺激图片透明度，0为透明，255为完全不透明
+tm_pra = 200 # 刺激图片透明度，0为透明，255为完全不透明
 high_time = 60
 low_time = 5
 
@@ -36,7 +31,6 @@ pygame.init()
 infoObject = pygame.display.Info()
 size = width, height = infoObject.current_w, infoObject.current_h  # 控制文本框的大小
 list_time_res = [0] * trail_times
-
 window = pygame.display.set_mode(size, FULLSCREEN | HWSURFACE | DOUBLEBUF)
 surBtnNormal = pygame.image.load("../picture_resourse/btn_normal.png").convert_alpha()
 surBtnMove = pygame.image.load("../picture_resourse/btn_move.png").convert_alpha()
@@ -153,12 +147,11 @@ stimu_delaytime_list = []  # 储存每一次随机产生的刺激延迟时间
 for i in range(0, 10):
     stimu_delaytime_list.extend(stimu_delaytime)
 random.shuffle(stimu_delaytime_list)
-
 for i in range(0,trail_times-1):
     appear_time.append(i*600+time_random5())
-
 for i in range(0,len(appear_time)):
     end_time.append(appear_time[i]+stimu_delaytime_list[i])
+
 # stimu_delaytime_list.append(0)
 # for time_i in range(1, trail_times + 1):
 #     if stimu_delaytime_list[time_i - 1] == 0:
@@ -209,7 +202,7 @@ files10 = getfiles(Path10)
 files11 = getfiles(Path11)
 
 
-bg_num = 200  # 图片数目
+bg_num = 280  # 图片数目
 stimu_num = trail_times  # 刺激图片数目
 for i in range(0, bg_num):
     picture = pygame.image.load(Path + '\\' + files[i]).convert()
@@ -373,7 +366,7 @@ while 1:
             # print(toc(t1))
             # print(i)
     for i in range(0,len(appear_time)):
-        if count>=appear_time[i] and count<=end_time[i]:
+        if count>=appear_time[i] and count<=end_time[i] and appear_time[i]!=end_time[i]:
             flag = i
             break
         else:
