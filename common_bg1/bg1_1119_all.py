@@ -11,12 +11,6 @@ import random
 
 filename = "test"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
-
-# stimu_delaytime = [0,2,3,4,5,9,12]  # 储存刺激呈现时间的时间序列，与time_random2()配合1
-# stimu_delaytime = [0,2,4,6,8,10,12,20]#2
-# stimu_delaytime = [0,3,6,9,12,15,20]#3
-# stimu_delaytime = [0,4,8,12,16,20,30]#4
-# stimu_delaytime = [0,5,10,15,20,25,40]#5
 stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
 #stimu_delaytime = [152,152,152,152,152,152,152,152,152]
@@ -401,7 +395,7 @@ while 1:
         window.blit(imagebox2[flag],(0,0))
 
     if res > -2 and res != -1:
-        window.blit(surface[num], (2 * width / 5, 2 * height / 5))
+        window.blit(surface[num], (11 * width / 30+10, 2 * height / 5))
         # 显示问题
     if res <= -2:
         window.fill((0, 0, 0))

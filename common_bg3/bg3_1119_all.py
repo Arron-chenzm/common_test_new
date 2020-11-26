@@ -9,28 +9,28 @@ from qesandans import qesandans
 from PIL import ImageTk, Image
 import random
 
-filename = "test1"  # 结果文件名
+filename = "test3"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
 stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
-#stimu_delaytime = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
 #stimu_delaytime = [352,352,352,352,352,352,352,352,352]
 
-bg_appeartime = 60  # 每一张背景图片呈现的时间,单位1000/60ms
+bg_appeartime = 60
 bg_appearnum = 10  # 每一个trail呈现的图片数目
 trail_bgtime = bg_appeartime * bg_appearnum  # 每一个trail背景图片呈现的总时间
 trail_times = 91  # 呈现trail次数
 num = 0  # 储藏回答问题的总数目
 trail_num = []  # 存储每一个trail结束后，回答问题的总数目
 ciji_shape = 4
-tm_pra = 200 # 刺激图片透明度，0为透明，255为完全不透明
-high_time = 60
-low_time = 5
+tm_pra = 255  # 刺激图片透明度，0为透明，255为完全不透明
+high_time = 60  # 每一张背景图片呈现的最高时间,单位1000/60ms
+low_time = 5  # 每一张背景图片呈现的最低时间,单位1000/60ms
 
 pygame.init()
 infoObject = pygame.display.Info()
 size = width, height = infoObject.current_w, infoObject.current_h  # 控制文本框的大小
 list_time_res = [0] * trail_times
+
 window = pygame.display.set_mode(size, FULLSCREEN | HWSURFACE | DOUBLEBUF)
 surBtnNormal = pygame.image.load("../picture_resourse/btn_normal.png").convert_alpha()
 surBtnMove = pygame.image.load("../picture_resourse/btn_move.png").convert_alpha()
@@ -124,22 +124,7 @@ qesandans_appeartime = []  # 储存问卷呈现时间
 for i in range(0, trail_times):
     qesandans_appeartime.append((i + 1) * bg_appeartime * bg_appearnum)
 
-ciji_wzx = [] # 决定刺激出现的x坐标
-ciji_wzy = [] # 决定刺激出现的y坐标
-for i in range(0,trail_times):
-    pic_local = random.randint(1,4)
-    if pic_local == 1:
-        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * width / ciji_shape)-10))
-        ciji_wzy.append(0)
-    elif pic_local == 2:
-        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * width / ciji_shape)-10))
-        ciji_wzy.append(int((ciji_shape-1) * height / ciji_shape)-10)
-    elif pic_local == 3:
-        ciji_wzx.append(0)
-        ciji_wzy.append(random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
-    elif pic_local == 4:
-        ciji_wzx.append(int((ciji_shape-1) * width / ciji_shape)-10)
-        ciji_wzy.append( random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
+
 
 appear_time = []  # 储存刺激出现的时间
 end_time = [] # 储存刺激结束的时间
@@ -147,11 +132,12 @@ stimu_delaytime_list = []  # 储存每一次随机产生的刺激延迟时间
 for i in range(0, 10):
     stimu_delaytime_list.extend(stimu_delaytime)
 random.shuffle(stimu_delaytime_list)
+
 for i in range(0,trail_times-1):
     appear_time.append(i*600+time_random5())
+
 for i in range(0,len(appear_time)):
     end_time.append(appear_time[i]+stimu_delaytime_list[i])
-
 # stimu_delaytime_list.append(0)
 # for time_i in range(1, trail_times + 1):
 #     if stimu_delaytime_list[time_i - 1] == 0:
@@ -177,17 +163,17 @@ for i in range(0, 3000):
 # print(result)
 imagebox = []
 imagebox2 = []
-Path = "../database/database1/cat_{}".format(mode)
-Path2 = "../database/database1/apple_{}".format(mode)
-Path3 = "../database/database1/banana_{}".format(mode)
-Path4 = "../database/database1/butterfly_{}".format(mode)
-Path5 = "../database/database1/cattle_{}".format(mode)
-Path6 = "../database/database1/dog_{}".format(mode)
-Path7 = "../database/database1/durian_{}".format(mode)
-Path8 = "../database/database1/grape_{}".format(mode)
-Path9 = "../database/database1/mug_{}".format(mode)
-Path10 = "../database/database1/panda_{}".format(mode)
-Path11 = "../database/database1/tiger_{}".format(mode)
+Path = "../database/database3/noise_{}".format(mode)
+Path2 = "../database/database3/apple_gray_{}".format(mode)
+Path3 = "../database/database3/banana_gray_{}".format(mode)
+Path4 = "../database/database3/butterfly_gray_{}".format(mode)
+Path5 = "../database/database3/cattle_gray_{}".format(mode)
+Path6 = "../database/database3/dog_gray_{}".format(mode)
+Path7 = "../database/database3/durian_gray_{}".format(mode)
+Path8 = "../database/database3/grape_gray_{}".format(mode)
+Path9 = "../database/database3/mug_gray_{}".format(mode)
+Path10 = "../database/database3/panda_gray_{}".format(mode)
+Path11 = "../database/database3/tiger_gray_{}".format(mode)
 
 files = getfiles(Path)
 files2 = getfiles(Path2)
@@ -202,7 +188,7 @@ files10 = getfiles(Path10)
 files11 = getfiles(Path11)
 
 
-bg_num = 280  # 图片数目
+bg_num = 100  # 图片数目
 stimu_num = trail_times  # 刺激图片数目
 for i in range(0, bg_num):
     picture = pygame.image.load(Path + '\\' + files[i]).convert()
@@ -211,9 +197,11 @@ for i in range(0, bg_num):
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
+imagebox.extend(imagebox)
+imagebox.extend(imagebox)
 random.shuffle(imagebox)
 
-for i in range(0, trail_times): #pic_ciji = []
+for i in range(0, trail_times):
     ciji_random = time_random4()
     ciji_path = ''
     ciji_file = []
@@ -258,26 +246,10 @@ for i in range(0, trail_times): #pic_ciji = []
         ciji_path = Path11
         pic_ciji.append('老虎')
     picture = pygame.image.load(ciji_path + '\\' + ciji_file.pop()).convert()
-    picture = pygame.transform.scale(picture, (int(width / ciji_shape), int(height / ciji_shape)))
+    picture = pygame.transform.scale(picture, (width, height))
     picture.set_alpha(tm_pra)  # 0透明 255不透明
     imagebox2.append(picture)
-#pic_ciji.reverse()
 
-# for i in range(0, bg_num):
-#     picture = pygame.image.load(Path + '\\' + files[i])
-#     picture = pygame.transform.scale(picture, (width, height))
-#     imagebox.append(picture)
-# for i in range(0, 220):
-#     picture = pygame.image.load(Path + '\\' + files[i])
-#     picture = pygame.transform.scale(picture, (width, height))
-#     imagebox.append(picture)
-# for i in range(0, 80):
-#     picture = pygame.image.load(Path2 + '\\' + files2[i]).convert()
-#     picture = pygame.transform.scale(picture, (int(width / 3), int(height / 3)))
-#     imagebox2.append(picture)
-# imagebox2.extend(imagebox2)
-# random.shuffle(imagebox2)
-# list = [2,62,122,182,242,302,362,422,500,560,620,680,740,800,860,1300]
 list0 = []
 list0.append(1)
 list = []# 储存背景出现的时间
@@ -392,7 +364,7 @@ while 1:
         # 显示背景照片
     if res >= 0 and flag >=0:
         window.blit(imagebox[res], (0, 0))
-        window.blit(imagebox2[flag],(ciji_wzx[flag],ciji_wzy[flag]))
+        window.blit(imagebox2[flag],(0,0))
 
     if res > -2 and res != -1:
         window.blit(surface[num], (11 * width / 30+10, 2 * height / 5))

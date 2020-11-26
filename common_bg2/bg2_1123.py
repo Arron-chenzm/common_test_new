@@ -267,7 +267,7 @@ while 1:
         #window.blit(imagebox[res], (0, 0))
         window.blit(imagebox2[flag],(0,0))
     if res > -2:
-        window.blit(surface[num], (2*width/5, 2*height/5))
+        window.blit(surface[num], (11 * width / 30+10, 2*height/5))
         # 显示问题
     if res <= -2:
         window.fill((0, 0, 0))

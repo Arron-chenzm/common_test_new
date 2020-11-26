@@ -11,9 +11,10 @@ import random
 
 filename = "test3"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
-#stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
-stimu_delaytime = [52,52,52,52,52,52,25,52,52]
+stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+#stimu_delaytime = [52,52,52,52,52,52,25,52,52]
 #stimu_delaytime = [352,352,352,352,352,352,352,352,352]
+ciji_shape = 7  # 3 5 7
 
 bg_appeartime = 60
 bg_appearnum = 10  # 每一个trail呈现的图片数目
@@ -21,8 +22,7 @@ trail_bgtime = bg_appeartime * bg_appearnum  # 每一个trail背景图片呈现�
 trail_times = 91  # 呈现trail次数
 num = 0  # 储藏回答问题的总数目
 trail_num = []  # 存储每一个trail结束后，回答问题的总数目
-ciji_shape = 4
-tm_pra = 200  # 刺激图片透明度，0为透明，255为完全不透明
+tm_pra = 255  # 刺激图片透明度，0为透明，255为完全不透明
 high_time = 60  # 每一张背景图片呈现的最高时间,单位1000/60ms
 low_time = 5  # 每一张背景图片呈现的最低时间,单位1000/60ms
 
@@ -30,7 +30,6 @@ pygame.init()
 infoObject = pygame.display.Info()
 size = width, height = infoObject.current_w, infoObject.current_h  # 控制文本框的大小
 list_time_res = [0] * trail_times
-
 window = pygame.display.set_mode(size, FULLSCREEN | HWSURFACE | DOUBLEBUF)
 surBtnNormal = pygame.image.load("../picture_resourse/btn_normal.png").convert_alpha()
 surBtnMove = pygame.image.load("../picture_resourse/btn_move.png").convert_alpha()
@@ -129,16 +128,16 @@ ciji_wzy = [] # 决定刺激出现的y坐标
 for i in range(0,trail_times):
     pic_local = random.randint(1,4)
     if pic_local == 1:
-        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * width / ciji_shape)-10))
+        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
         ciji_wzy.append(0)
     elif pic_local == 2:
-        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * width / ciji_shape)-10))
+        ciji_wzx.append(random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
         ciji_wzy.append(int((ciji_shape-1) * height / ciji_shape)-10)
     elif pic_local == 3:
         ciji_wzx.append(0)
         ciji_wzy.append(random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
     elif pic_local == 4:
-        ciji_wzx.append(int((ciji_shape-1) * width / ciji_shape)-10)
+        ciji_wzx.append(int((ciji_shape-1) * height / ciji_shape)-10)
         ciji_wzy.append( random.randint(0,int((ciji_shape-1) * height / ciji_shape)-10))
 
 appear_time = []  # 储存刺激出现的时间
@@ -203,12 +202,15 @@ files10 = getfiles(Path10)
 files11 = getfiles(Path11)
 
 
-bg_num = 300  # 图片数目
+bg_num = 100  # 图片数目
 stimu_num = trail_times  # 刺激图片数目
 for i in range(0, bg_num):
     picture = pygame.image.load(Path + '\\' + files[i]).convert()
     picture = pygame.transform.scale(picture, (width, height))
     imagebox.append(picture)
+    print(i)
+imagebox.extend(imagebox)
+imagebox.extend(imagebox)
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
 imagebox.extend(imagebox)
@@ -259,7 +261,7 @@ for i in range(0, trail_times):
         ciji_path = Path11
         pic_ciji.append('老虎')
     picture = pygame.image.load(ciji_path + '\\' + ciji_file.pop()).convert()
-    picture = pygame.transform.scale(picture, (int(width / ciji_shape), int(height / ciji_shape)))
+    picture = pygame.transform.scale(picture, (int(height / ciji_shape), int(height / ciji_shape)))
     picture.set_alpha(tm_pra)  # 0透明 255不透明
     imagebox2.append(picture)
 
@@ -380,7 +382,7 @@ while 1:
         window.blit(imagebox2[flag],(ciji_wzx[flag],ciji_wzy[flag]))
 
     if res > -2 and res != -1:
-        window.blit(surface[num], (2 * width / 5, 2 * height / 5))
+        window.blit(surface[num], (11 * width / 30+10, 2 * height / 5))
         # 显示问题
     if res <= -2:
         window.fill((0, 0, 0))
