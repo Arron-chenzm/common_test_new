@@ -11,11 +11,11 @@ import random
 
 filename = "sgl_bg1_100_3_all"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
-#stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
 #stimu_delaytime = [0, 3, 6, 9, 12, 15, 18, 21, 24]
 #stimu_delaytime = [0, 4, 8, 12, 16, 20, 24, 28, 32]
 #stimu_delaytime = [52,52,52,52,52,52,52,52,52]
-stimu_delaytime = [152,152,152,152,152,152,152,152,152]
+#stimu_delaytime = [152,152,152,152,152,152,152,152,152]
 
 bg_appeartime = 60  # 每一张背景图片呈现的时间,单位1000/60ms
 bg_appearnum = 10  # 每一个trail呈现的图片数目

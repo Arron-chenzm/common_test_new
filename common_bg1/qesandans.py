@@ -78,7 +78,7 @@ class qesandans():
         surBtnMove = pygame.transform.scale(surBtnMove, (120, 42))
         surBtnDown = pygame.image.load("../picture_resourse/btn_down.png").convert_alpha()
         surBtnDown = pygame.transform.scale(surBtnDown, (120, 42))
-        btnFont = pygame.font.SysFont("lisu", 40)
+        btnFont = pygame.font.SysFont("fangsong", 36)
         time_start1 = self.toc(self.t1)
 
         #print("time_start1:{}".format(time_start1))
