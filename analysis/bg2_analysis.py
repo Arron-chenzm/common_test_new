@@ -52,9 +52,12 @@ def bg1_thing(str):
     return res
 
 
+stimu_delaytime1 = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+stimu_delaytime2 = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+stimu_delaytime3 = [0, 4, 8, 12, 16, 20, 24, 28, 32]
 
-stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]
-fp = open('../result/lwj/lwj_bg2_10_1.txt','r', encoding='utf-8')
+stimu_delaytime = stimu_delaytime3
+fp = open('../result/SGL/sgl_bg2_100_3.txt','r', encoding='utf-8')
 lines = fp.readlines()
 ciji_times = [0,0,0,0,0,0,0,0,0]
 result = [0,0,0,0,0,0,0,0,0]
@@ -66,9 +69,9 @@ for i in range(0,len(lines)-1):
         time = bg1_time(lines[i])
         res = bg1_res(lines[i])
         thing = bg1_thing(lines[i])
-        print(time)
-        print(res)
-        print(thing)
+        # print(time)
+        # print(res)
+        # print(thing)
         if time == stimu_delaytime[0]:
             ciji_times[0] = ciji_times[0] + 1
             if res == "未看到不同栅距光栅":
@@ -79,11 +82,12 @@ for i in range(0,len(lines)-1):
                 if res == "看到不同栅距光栅" and thing == "None" :
                     result[j] = result[j] + 1
                 elif thing == "不确定":
-                    result[j] = result[j] + 0.5
+                    result[j] = result[j] + 1
 
 for i in range(0,len(ciji_times)):
     acc[i] = result[i]/ciji_times[i]
     print(result[i])
+    print(ciji_times[i])
 plt.plot(stimu_delaytime,acc,marker = 'o')
 for a,b in zip(stimu_delaytime,acc):
     plt.text(a,b,(a,b),ha='center',va='bottom')

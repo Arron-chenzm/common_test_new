@@ -9,9 +9,11 @@ from qesandans import qesandans
 from PIL import ImageTk, Image
 import random
 
-filename = "test3"  # 结果文件名
+filename = "sgl_bg3_100_3_shape7"  # 结果文件名
 mode = 100  # 对比度选择 100 50 20 10
-stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+#stimu_delaytime = [0, 2, 4, 6, 8, 10, 12, 14, 16]  # 9个时间
+#stimu_delaytime = [0, 3, 6, 9, 12, 15, 18, 21, 24]
+stimu_delaytime = [0, 4, 8, 12, 16, 20, 24, 28, 32]
 #stimu_delaytime = [52,52,52,52,52,52,25,52,52]
 #stimu_delaytime = [352,352,352,352,352,352,352,352,352]
 ciji_shape = 7  # 3 5 7
